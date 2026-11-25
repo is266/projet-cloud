@@ -1,1 +1,3 @@
-# projet-cloud
+# projet-cloud 
+CI/CD
+GitOps
