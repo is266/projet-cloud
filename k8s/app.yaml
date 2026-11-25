@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projet-cloud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projet-cloud
+  template:
+    metadata:
+      labels:
+        app: projet-cloud
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/is266/projet-cloud:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: projet-cloud
+spec:
+  selector:
+    app: projet-cloud
+  ports:
+    - port: 80
+      targetPort: 80
